@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Race {
+  AASIMAR
+  AIR_GENASI
+  BUGBEAR
+  DRAGONBORN
+  DWARF
+  EARTH_GENASI
+  ELF
+  FIRBOLG
+  FIRE_GENASI
+  GNOME
+  GOBLIN
+  GOLIATH
+  HALF_ELF
+  HALF_ORC
+  HALFLING
+  HOBGOBLIN
+  HUMAN
+  KOBOLD
+  ORC
+  SATYR
+  TABAXI
+  TIEFLING
+  WATER_GENASI
+  YUAN_TI
+}
+
+model Character {
+  id                Int       @id @default(autoincrement())
+  name              String
+  race              Race?
+  imageUrl          String
+  playableCharacter Boolean   @default(false)
+  location          Location? @relation(fields: [locationId], references: [id])
+  locationId        Int?
+  faction           Faction?  @relation(fields: [factionId], references: [id])
+  factionId         Int?
+  Quest             Quest[]
+}
+
+model Location {
+  id        Int         @id @default(autoincrement())
+  name      String
+  imageUrl  String
+  character Character[]
+  Faction   Faction[]
+}
+
+model Quest {
+  id           Int        @id @default(autoincrement())
+  name         String
+  description  String?
+  questgiver   Character? @relation(fields: [questgiverId], references: [id])
+  questgiverId Int?
+}
+
+model Faction {
+  id            Int         @id @default(autoincrement())
+  name          String
+  description   String?
+  logoUrl       String
+  character     Character[]
+  keyLocation   Location?   @relation(fields: [keyLocationId], references: [id])
+  keyLocationId Int?
+}

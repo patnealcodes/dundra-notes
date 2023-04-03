@@ -1,0 +1,34 @@
+{
+  "name": "dundra-notes_server",
+  "version": "0.0.1",
+  "description": "An app for taking notes with relational references - Server Code",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patnealcodes/dundra-notes.git"
+  },
+  "author": "patnealcodes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patnealcodes/dundra-notes/issues"
+  },
+  "homepage": "https://github.com/patnealcodes/dundra-notes#readme",
+  "dependencies": {
+    "@prisma/client": "^4.12.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22",
+    "prisma": "^4.12.0",
+    "typescript": "^5.0.3"
+  }
+}

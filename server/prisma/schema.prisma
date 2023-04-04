@@ -47,7 +47,7 @@ model Character {
   locationId        Int?
   faction           Faction?  @relation(fields: [factionId], references: [id])
   factionId         Int?
-  Quest             Quest[]
+  quest             Quest[]
 }
 
 model Location {

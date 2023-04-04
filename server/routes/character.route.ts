@@ -1,14 +1,14 @@
 import express from 'express'
-import { create } from '../controllers/character.controller'
+import { create, get, update, remove } from '../controllers/character.controller'
 
 const characterRouter = express.Router()
 
 characterRouter.post('/', create)
 
-// characterRouter.get('/', get)
+characterRouter.get('/:id', get)
 
-// characterRouter.put('/:id', update)
+characterRouter.put('/', update)
 
-// characterRouter.delete('/', delete)
+characterRouter.delete('/', remove)
 
 export default characterRouter
